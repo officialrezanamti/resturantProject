@@ -2,32 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+
+.active{
+     color: rgba(253, 202, 61, 0.969);
+}
+.box{
+     overflow: hidden;
+}
+.box::before{
+     width: 480px;
+     height: 510px;
+     position: absolute;
+     content: '';
+     background:linear-gradient(to right , transparent , transparent , rgb(255, 174, 0) , aqua);
+     top: -50%;
+     left: -50%;
+     animation: animate 4s linear infinite;
+     transform-origin: bottom right;
+
+}
+.box::after{
+     width: 480px;
+     height: 510px;
+     position: absolute;
+     content: '';
+     background:linear-gradient(to right , transparent , transparent , rgb(0, 8, 255) , aqua);
+     top: -50%;
+     left: -50%;
+     animation: animate 4s linear infinite;
+     transform-origin: bottom right;
+     animation-delay: 2s;
+
+}
+.box:hover .text{
+     background: linear-gradient(to right ,aqua , rgb(236, 188, 57) , rgb(216, 151, 23));
+     transition: all .3s;
+     background-clip: text;
+     color: transparent;
+
+}
+.text{
+     background: linear-gradient(to bottom ,rgb(0, 8, 255), aqua , rgb(0, 8, 255));
+     background-clip: text;
+     color: transparent;
+     transition: all 1s;
+}
+@keyframes animate {
+     0%{
+          transform: rotate(0deg);
+     }
+     100%{
+          transform: rotate(360deg);
+     }
+}
+.bgmain{
+     animation: bgAnime linear 50s infinite;
+     background: linear-gradient(to bottom right , rgb(38, 38, 194) , rgb(4, 4, 87)1%, rgb(38, 38, 194) , rgb(18, 214, 232) 60%,rgb(35, 35, 156) , rgb(123, 18, 172)100%
+     
+     );
+     background-size: 500% 500%;
+     overflow: auto;
+}
+@keyframes bgAnime {
+     0% {
+          background-position: 0% 0%;
+      }
+      50% {
+          background-position: 100% 100%;
+      }
+      100% {
+          background-position: 0% 0%;
+      }
+     
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.header{
+     background-image: url('../public/hero-bg.jpg');
+     width: 100vw;
+     height: 80vh;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
 }
